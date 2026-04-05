@@ -1,89 +1,219 @@
-***
+<div align="center">
 
-# Finance Dashboard
+<br/>
 
-A clean, responsive, and interactive frontend dashboard built with React to track personal finances, visualize spending patterns, and manage transactions. 
+# **W E A L T H P U L S E**
 
-This project was built to fulfill the Finance Dashboard UI assignment requirements, focusing on UI design, component structuring, state management, and user experience.
+### Personal Finance Dashboard — Built with React
 
+<br/>
 
-## Features Implemented
+[![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
+[![Vite](https://img.shields.io/badge/Vite-5-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
+[![Recharts](https://img.shields.io/badge/Recharts-2-22C55E?style=for-the-badge)](https://recharts.org/)
+[![CSS3](https://img.shields.io/badge/CSS3-Vanilla-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
 
-This dashboard fulfills 100% of the core requirements and includes several optional enhancements.
+<br/>
+
+> *Track every rupee. Visualize every trend. Control every transaction.*
+
+<br/>
+
+---
+
+</div>
+
+<br/>
+
+## What is WealthPulse?
+
+**WealthPulse** is a responsive, feature-rich personal finance dashboard that gives you a real-time overview of your money - income, expenses, balance trends, and spending patterns - all in one sleek interface. Built entirely on the frontend using React 19 + Recharts, with zero backend required.
+
+<br/>
+
+## Feature Breakdown
 
 ### Dashboard Overview
-* **Summary Cards:** Instantly view Total Balance, Total Income, and Total Expenses.
-* **Balance Trend (Time-based Viz):** A dynamic line chart tracking account balance over time.
-* **Spending Breakdown (Categorical Viz):** A colorful pie chart visualizing expenses by category.
 
-### Transactions Management
-* **Data Table:** Displays an interactive list of transactions (Date, Amount, Category, Type).
-* **Search & Filtering:** Search bar to instantly filter transactions by category.
-* **Sorting:** Toggle sorting between "Latest" (date-based) and "Amount" (highest to lowest).
-* **CRUD Operations:** Admins can quickly add new income/expense records and delete existing ones. 
+| Feature | Description |
+|---------------------|--------------------------------------------------|
+| **Balance Card** | Net balance computed live from all transactions |
+| **Income Card** | Aggregated total of all income entries |
+| **Expense Card** | Aggregated total of all expense entries |
+| **Balance Trend Chart** | Area/line chart showing account balance over time |
+| **Spending Breakdown** | Donut pie chart categorizing expenses visually |
 
-### Simulated Role-Based UI
-* Includes a toggle switch in the Top Bar to simulate `Viewer` and `Admin` roles.
-* **Viewer:** Read-only access to charts, tables, and insights.
-* **Admin:** Unlocks the "Add Transaction" form and the "Delete" action in the data table.
+<br/>
+
+### Transaction Management
+
+| Feature | Description |
+|----------------------|------------------------------------------------|
+| **Data Table** | Full transaction list — date, amount, category, type |
+| **Live Search** | Instantly filters rows by category keyword |
+| **Smart Sort** | Toggle between latest-first or highest-amount-first |
+| **Add Transaction** | Admin-only form to log new income or expense records |
+| **Delete Transaction** | Admin-only one-click row removal |
+
+<br/>
+
+### Role-Based Access Control
+
+| Feature | Viewer | Admin |
+|:--------|:------:|:-----:|
+| View Dashboard | Yes | Yes |
+| Browse Charts | Yes | Yes |
+| Search & Sort | Yes | Yes |
+| Add Transactions | No | Yes |
+| Delete Records | No | Yes |
+| Export Data | No | Yes |
+| Sync Mock API | No | Yes |
+
+<br/>
 
 ### Automated Insights
-* **Highest Spending Category:** Automatically calculates and displays the category draining the most funds.
-* **Monthly Comparison:** Aggregates income vs. expense data by month.
-* **Smart Observations:** Provides dynamic feedback based on the user's spending habits (e.g., "Good job! You are saving money.").
 
-### Optional Enhancements Included
-* **Data Persistence:** Uses browser `localStorage` to save and load transactions automatically.
-* **CSV Export:** One-click generation and download of transaction data into a `.csv` file.
-* **Animations:** Smooth `fadeUp` CSS animations on load and interactive transition effects on charts (via Recharts).
-* **Responsive Design:** Fluid layout handling that utilizes CSS Flexbox to adapt to different screen sizes.
+- **Highest Spending Category** — auto-detects where most money is going
+- **Monthly Comparison** — income vs. expense aggregated by month
+- **Smart Observation** — dynamic feedback based on your financial behavior
+
+<br/>
+
+### Optional Enhancements
+
+- **Data Persistence** — `localStorage` saves and restores all transactions across sessions
+- **CSV Export** — one-click download of all transaction records as `.csv`
+- **Dark / Light Mode** — theme toggle with smooth CSS transitions
+- **Animations** — staggered card entrance, animated number counters, floating particles, toast notifications
+- **Responsive Layout** — Flexbox-first design that wraps cleanly on any screen size
+
+<br/>
+
+---
 
 ## Tech Stack
 
-* **Framework:** React 19 (via Vite for fast compilation)
-* **Styling:** Vanilla CSS3 (Custom gradients, flexbox layouts)
-* **Charts:** [Recharts](https://recharts.org/) (Declarative React components for D3 charts)
+| Technology | Purpose |
+|:-----------|:--------|
+| React 19 | UI & State |
+| Vite 5 | Build & Dev Server |
+| Recharts 2 | Data Visualization |
+| Vanilla CSS3 | Styling & Animations |
+| localStorage | Client Persistence |
+
+<br/>
+
+---
 
 ## Project Structure
 
-All core logic and components are housed within `src/App.jsx` for ease of review, modularized into functional React components:
-* `<Sidebar />`: Main navigation layout.
-* `<TopBar />`: Houses the role toggle, search, sort, and export functions.
-* `<TransactionForm />`: The input form for adding records (Admin only).
-* `<SummaryCards />` & `<Insights />`: Renders calculated financial metrics.
-* `<BalanceChart />` & `<SpendingChart />`: Recharts wrappers for data visualization.
-* `<TransactionsTable />`: The main data grid.
+```
+finance-dashboard/
+│
+├── src/
+│   ├── App.jsx          ← Core app: all components, state & logic
+│   ├── App.css          ← Design system: tokens, layout, animations
+│   ├── index.css        ← Global reset & base styles
+│   └── main.jsx         ← React entry point
+│
+├── public/
+├── package.json
+└── vite.config.js
+```
 
-## Running Locally
+**Component breakdown inside `App.jsx`:**
 
-To run this project on your local machine:
+```
+App
+ ├── <Sidebar />            — Navigation panel
+ ├── <TopBar />             — Search, sort, role toggle, export
+ ├── <TransactionForm />    — Add record form (Admin only)
+ ├── KPI Cards              — Balance, Income, Expense, Insight
+ ├── <BalanceTrendChart />  — AreaChart (balance over time)
+ ├── <SpendingPieChart />   — Donut PieChart (categories)
+ └── <TransactionsTable />  — Sortable, searchable data grid
+```
 
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/SHUBHASHREE01/finance_dashboad.git
-   cd finance_dashboard
-   ```
-
-2. **Install dependencies:**
-   Make sure you have Node.js installed.
-   ```bash
-   npm install
-   # This will install React, ReactDOM, and Recharts
-   ```
-
-3. **Start the development server:**
-   ```bash
-   npm run dev
-   ```
-
-4. **View the App:**
-   Open `http://localhost:5173` (or the port provided by Vite) in your browser.
-
-## Technical Approach & State Management
-
-* **State:** Application state is managed entirely using React's native `useState` hooks. The central source of truth is the `transactions` array, from which all other metrics (balance, income, pie chart data, line chart data) are derived on the fly.
-* **Effects:** The `useEffect` hook is utilized strictly for syncing the `transactions` state with `localStorage` upon initialization and subsequent updates.
-* **Styling Strategy:** A mobile-first, fluid approach using Flexbox ensures the dashboard pieces `wrap` cleanly on smaller screens. 
+<br/>
 
 ---
-*Created by Shubhashree TK*
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js `v18+`
+- npm `v9+`
+
+### Installation
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/SHUBHASHREE01/finance_dashboad.git
+cd finance_dashboard
+
+# 2. Install dependencies
+npm install
+
+# 3. Start the development server
+npm run dev
+```
+
+Then open **[http://localhost:5173](http://localhost:5173)** in your browser.
+
+<br/>
+
+### Available Scripts
+
+| Command | Description |
+|-------------------|--------------------------------|
+| `npm run dev` | Start local dev server with HMR |
+| `npm run build` | Build for production |
+| `npm run preview` | Preview the production build |
+
+<br/>
+
+---
+
+## Technical Approach
+
+### State Management
+All application state lives in `useState` hooks at the top-level `App` component. The `transactions` array is the single source of truth — every derived metric (balance, chart data, pie slices, insights) is computed from it on each render.
+
+### Side Effects
+`useEffect` is used strictly for:
+1. Hydrating state from `localStorage` on first mount
+2. Writing state back to `localStorage` on every change
+3. Toggling the `dark` class on `document.body`
+
+### Styling Strategy
+A CSS custom-property design system (`--variables`) defines all colors, spacing, radii, and shadows. Components reference tokens rather than hardcoded values, making theme switching (dark ↔ light) a single class toggle on the root element.
+
+<br/>
+
+---
+
+## UI Highlights
+
+```
+◈ Glassmorphic sidebar with backdrop-filter blur
+◈ Animated KPI cards with staggered entrance
+◈ Gradient-filled area chart with custom tooltip
+◈ Donut pie chart with inline category legend
+◈ Slide-in transaction form (CSS height animation)
+◈ Toast notification system (add / delete / sync / export)
+◈ Floating ambient particle layer
+◈ DM Mono + Syne font pairing
+```
+
+<br/>
+
+---
+
+<div align="center">
+
+**Built with 💜 by [Shubhashree TK](https://github.com/SHUBHASHREE01)**
+
+*React · Recharts · Vite · Vanilla CSS*
+
+</div>
